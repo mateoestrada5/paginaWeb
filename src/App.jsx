@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-
-
-
-
-
-
 function App() {
   const personasArray = [
     {
@@ -87,29 +81,29 @@ function App() {
       imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Stephen_Hawking.StarChild.jpg/800px-Stephen_Hawking.StarChild.jpg"
     },
   ];
-  
-    const [personas, setPersonas] = useState([])
 
-    useEffect(() => {
-      setPersonas(personasArray)
+  const [personas, setPersonas] = useState([]);
 
-    }, [])
+  useEffect(() => {
+    setPersonas(personasArray);
+  }, []);
+
   return (
     <div className="bg-gray-200 min-h-screen p-8">
       <div className="max-w-screen-xl mx-auto">
         <div className="bg-white rounded-xl overflow-hidden shadow-md p-8 mb-8">
           <h1 className="text-3xl font-bold text-center text-blue-900">Personas más importantes de la historia</h1>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {personasArray.map((persona, index) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          {personas.map((persona, index) => (
             <div key={index} className="bg-white rounded-xl overflow-hidden shadow-md">
               {/* Imagen y Contenido */}
-              <div className="flex items-center p-4">
-                <div className="flex-shrink-0">
-                  <img className="h-48 w-full object-cover md:w-48 rounded-full" src={persona.imagen} alt="Imagen de perfil" />
+              <div className="flex flex-col items-center p-4">
+                <div className="w-36 h-36 md:w-48 md:h-48 overflow-hidden rounded-full">
+                  <img className="w-full h-full object-cover" src={persona.imagen} alt={persona.name} />
                 </div>
                 {/* Contenido */}
-                <div className="ml-4">
+                <div className="mt-4 text-center">
                   <div className="uppercase tracking-wide text-sm text-blue-700 font-semibold">{persona.name}</div>
                   <a href="#" className="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{persona.ocupacion}</a>
                   <p className="mt-2 text-gray-500">{persona.descripcion}</p>
